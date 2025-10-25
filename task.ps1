@@ -6,7 +6,7 @@ $subnetName = "default"
 $vnetAddressPrefix = "10.0.0.0/16"
 $subnetAddressPrefix = "10.0.0.0/24"
 $sshKeyName = "linuxboxsshkey"
-$sshKeyPublicKey = Get-Content "C:\Users\vital\.ssh\id_ed25519.pub"
+$sshKeyPublicKey = Get-Content "~/.ssh/id_ed25519.pub" -Raw
 $vmName = "matebox"
 $vmImage = "Ubuntu2204"
 $vmSize = "Standard_B1s"
@@ -44,5 +44,6 @@ for (($i = 1); $i -le 2; $i++) {
     -VirtualNetworkName $virtualNetworkName `
     -SecurityGroupName $networkSecurityGroupName `
     -SshKeyName $sshKeyName `
+    -AdminUsername "azureuser" `
     -AvailabilitySetName $availabilitySetName
 }
